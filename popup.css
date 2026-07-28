@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  min-width: 320px;
+  background: linear-gradient(160deg, #fff8e6 0%, #f5f2eb 100%);
+  color: #201a12;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.popup {
+  padding: 18px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #8f5b14;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 10px 0 8px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.body,
+.note {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.note {
+  margin-top: 12px;
+  color: #5f5344;
+  font-size: 13px;
+}
