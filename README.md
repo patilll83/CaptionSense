@@ -1,50 +1,90 @@
 # CaptionSense
 
-CaptionSense is a Chrome extension MVP that lets you hover English subtitle words on YouTube and see a quick meaning without leaving the video.
+[![Status](https://img.shields.io/badge/status-MVP-1f7a5a)](https://github.com/patilll83/CaptionSense)
+[![Platform](https://img.shields.io/badge/platform-Chrome-fbbc05)](https://www.google.com/chrome/)
+[![Focus](https://img.shields.io/badge/focus-YouTube%20captions-20232a)](https://www.youtube.com/)
+
+CaptionSense is a Chrome extension that helps you understand difficult subtitle words without pausing the video or opening a second device.
+
+Hover a word in the captions, and CaptionSense shows a quick meaning right inside the player.
 
 ## Demo
 
-![CaptionSense hover definition demo](assets/captionsense-demo.png)
+![CaptionSense hover definition demo showing a definition tooltip over YouTube subtitles](assets/captionsense-demo.png)
 
-## Why this exists
+## The idea
 
-When a movie, series, or YouTube video uses a difficult word in the captions, most people have to pause, pick up their phone, search the word, and then return to the video. CaptionSense keeps that learning moment inside the player by showing the meaning right on hover.
+When people watch movies, series, interviews, or lectures, captions often contain unfamiliar words. The usual flow is slow and distracting:
 
-## What this version does
+1. Pause the video
+2. Pick up the phone
+3. Search the word
+4. Return to the video
 
-- Watches YouTube subtitle segments as they update
-- Wraps subtitle words so they can be hovered
-- Shows a compact tooltip with:
-  - the word
-  - part of speech
-  - one quick definition
-- Caches definitions in extension storage for faster repeat lookups
+CaptionSense removes that interruption by bringing the meaning directly to the subtitle line.
 
-## Current limits
+## Current MVP
 
-- Only targets YouTube for now
-- Only works well with English word tokens
-- Uses `dictionaryapi.dev`, so network availability matters
-- Does not yet support phrase meanings, saved words, or AI explanations
+- YouTube-first Chrome extension
+- Hoverable English subtitle words
+- Instant tooltip with the word type and a short meaning
+- Dictionary lookups powered by `dictionaryapi.dev`
+- Local caching for faster repeated lookups
 
-## Load it in Chrome
+## How it works
 
-1. Open `chrome://extensions`
-2. Turn on **Developer mode**
-3. Click **Load unpacked**
-4. Select this folder:
-   `C:\Users\vijay\Documents\New project`
+1. A content script watches YouTube subtitle updates.
+2. Each subtitle line is split into hoverable word spans.
+3. When you hover a word, the extension asks the background worker for a meaning.
+4. The background worker fetches the definition and caches it in browser storage.
+5. The tooltip appears beside the subtitle without leaving the video.
 
-## How to test it
+## Why this is useful
 
-1. Open a YouTube video with captions available
-2. Turn captions on
-3. Hover a word in the subtitle line
-4. Wait for the tooltip to show the meaning
+- Keeps the learning moment inside the video
+- Reduces context switching
+- Makes subtitle-based vocabulary learning feel natural
+- Creates a path toward phrase explanations, saved words, and AI-assisted simplification
 
-## Suggested next steps
+## Installation
 
-- Add phrase-level detection for phrasal verbs and idioms
-- Add a saved-words panel
-- Support more subtitle providers beyond YouTube
-- Add optional AI-powered "explain this subtitle simply" mode
+1. Download or clone this repository.
+2. Open Chrome and go to `chrome://extensions`.
+3. Turn on `Developer mode`.
+4. Click `Load unpacked`.
+5. Select the project folder.
+
+## How to try it
+
+1. Open a YouTube video with English captions.
+2. Turn captions on.
+3. Hover a subtitle word.
+4. Read the definition in the tooltip.
+
+## Project scope right now
+
+- Target platform: YouTube
+- Supported input: English subtitle words
+- Definition source: `dictionaryapi.dev`
+- Interaction model: hover for quick meaning
+
+## Limitations
+
+- Does not yet explain phrases or idioms
+- Does not yet support other streaming platforms
+- Assumes subtitle text is available in the page DOM
+- Depends on network access for first-time word lookups
+
+## Next steps
+
+- Phrase-level detection for phrasal verbs and idioms
+- Saved words list for vocabulary review
+- Support for more subtitle providers
+- Optional AI mode for subtitle simplification and phrase explanation
+
+## Tech
+
+- Manifest V3 Chrome extension
+- Vanilla JavaScript
+- Content script plus background service worker
+- Chrome local storage for caching
