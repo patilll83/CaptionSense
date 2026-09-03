@@ -25,9 +25,12 @@ CaptionSense removes that interruption by bringing the meaning directly to the s
 
 ## Current MVP
 
-- YouTube-first Chrome extension
+- Works on YouTube, Netflix, and JioHotstar (JioHotstar support is best-effort — see [Limitations](#limitations))
 - Hoverable English subtitle words
-- Instant tooltip with the word type and a short meaning
+- Instant tooltip with pronunciation, word type, a short meaning, and a synonym when available
+- Click a word to pin its tooltip open; press `Esc` or click elsewhere to close it
+- Save words from the tooltip (☆) and review them from the popup
+- On/off toggle in the popup, so you can silence tooltips without removing the extension
 - Dictionary lookups powered by `dictionaryapi.dev`
 - Local caching for faster repeated lookups
 
@@ -63,23 +66,23 @@ CaptionSense removes that interruption by bringing the meaning directly to the s
 
 ## Project scope right now
 
-- Target platform: YouTube
+- Target platforms: YouTube, Netflix, JioHotstar
 - Supported input: English subtitle words
 - Definition source: `dictionaryapi.dev`
-- Interaction model: hover for quick meaning
+- Interaction model: hover for a quick peek, click to pin, star to save
 
 ## Limitations
 
 - Does not yet explain phrases or idioms
-- Does not yet support other streaming platforms
+- JioHotstar selectors are best-effort (its subtitle DOM isn't publicly documented). If tooltips don't appear there, inspect a caption line in devtools and update the `jiohotstar` entry in `content.js`'s `PROVIDERS` list
 - Assumes subtitle text is available in the page DOM
 - Depends on network access for first-time word lookups
 
 ## Next steps
 
 - Phrase-level detection for phrasal verbs and idioms
-- Saved words list for vocabulary review
-- Support for more subtitle providers
+- Spaced-repetition review mode for saved words
+- Support for more subtitle providers (Prime Video, Disney+)
 - Optional AI mode for subtitle simplification and phrase explanation
 
 ## Tech

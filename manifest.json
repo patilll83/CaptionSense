@@ -1,14 +1,17 @@
 {
   "manifest_version": 3,
   "name": "CaptionSense",
-  "description": "Hover subtitle words on YouTube to see quick meanings without leaving the video.",
-  "version": "0.1.0",
+  "description": "Hover subtitle words on YouTube, Netflix, and JioHotstar to see quick meanings without leaving the video.",
+  "version": "0.2.0",
   "permissions": [
     "storage"
   ],
   "host_permissions": [
     "https://api.dictionaryapi.dev/*",
-    "*://*.youtube.com/*"
+    "*://*.youtube.com/*",
+    "*://*.netflix.com/*",
+    "*://*.jiohotstar.com/*",
+    "*://*.hotstar.com/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -20,7 +23,10 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.youtube.com/*"
+        "*://*.youtube.com/*",
+        "*://*.netflix.com/*",
+        "*://*.jiohotstar.com/*",
+        "*://*.hotstar.com/*"
       ],
       "js": [
         "content.js"

@@ -8,12 +8,31 @@
   </head>
   <body>
     <main class="popup">
-      <p class="eyebrow">CaptionSense MVP</p>
-      <h1>Hover subtitle words on YouTube.</h1>
+      <p class="eyebrow">CaptionSense</p>
+      <h1>Hover subtitle words on YouTube, Netflix &amp; JioHotstar.</h1>
       <p class="body">
-        Turn on captions, move your mouse over a word, and the extension will show a quick meaning without leaving the video.
+        Turn on captions, move your mouse over a word, and the extension will show a quick meaning without leaving the video. Click a word to pin the tooltip open, or tap the star to save it.
       </p>
-      <p class="note">Current scope: YouTube captions in English.</p>
+
+      <section class="toggle-row">
+        <label class="switch">
+          <input type="checkbox" id="enabledToggle">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </label>
+        <div>
+          <p class="toggle-row__label">Enable CaptionSense</p>
+          <p class="toggle-row__hint">Turns hover tooltips off on this device.</p>
+        </div>
+      </section>
+
+      <section class="saved-words">
+        <h2>Saved words <span class="saved-words__count" id="savedWordsCount">0</span></h2>
+        <ul class="saved-words__list" id="savedWordsList"></ul>
+        <p class="saved-words__empty" id="savedWordsEmpty">Words you save from the tooltip will show up here.</p>
+      </section>
+
+      <p class="note">Supported: YouTube, Netflix, JioHotstar (best-effort) &middot; English captions.</p>
     </main>
+    <script src="popup.js"></script>
   </body>
 </html>
